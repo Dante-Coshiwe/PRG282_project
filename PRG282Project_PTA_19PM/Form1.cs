@@ -56,9 +56,9 @@ namespace PRG282Project_PTA_19PM
         }
 
         
-        
-
-        
+        /// <summary>
+        /// Add new superhero button click event
+        /// </summary> 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -96,33 +96,136 @@ namespace PRG282Project_PTA_19PM
                     MessageBox.Show($"Error adding superhero: {ex.Message}",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-        }
-
+        }       
         
+        /// <summary>
+    m   /// Update superhero button click event
+        /// </summary>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-           
+            try
+                 {
+                     if (selectedHeroId == -1)
+                     {
+                         MessageBox.Show("Please select a superhero from the grid first!",
+                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         return;
+                     }
+
+                     // Validate inputs
+                     if (!ValidateInputs())
+                         return;
+        
+                     // Parse input values
+                     int heroId = int.Parse(txtHeroID.Text);
+                     string name = txtName.Text.Trim();
+                     int age = int.Parse(txtAge.Text);
+                     string superpower = txtSuperpower.Text.Trim();
+                     int examScore = int.Parse(txtExamScore.Text);
+        
+                     // Create updated superhero
+                     Superhero updatedHero = new Superhero(heroId, name, age, superpower, examScore);
+        
+                     // Update in file
+                     fileHandler.UpdateSuperhero(selectedHeroId, updatedHero);
+        
+                     MessageBox.Show("Superhero updated successfully!", "Success",
+                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+                     // Refresh display and clear inputs
+                     LoadSuperheroes();
+                     ClearInputs();
+        
+                     // Git commit message suggestion
+                     MessageBox.Show("Remember to commit: git add . && git commit -m \"Updated superhero record\"",
+                         "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 }
+         catch (Exception ex)
+                 {
+                     MessageBox.Show($"Error updating superhero: {ex.Message}",
+                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 }           
         }
 
-        
+         /// <summary>
+         /// Delete superhero button click event
+         /// </summary>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+            try
+                 {
+                     if (selectedHeroId == -1)
+                     {
+                         MessageBox.Show("Please select a superhero from the grid first!",
+                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         return;
+                     }
+        
+                     // Confirm deletion
+                     DialogResult result = MessageBox.Show(
+                         $"Are you sure you want to delete Hero ID {selectedHeroId}?",
+                         "Confirm Delete",
+                         MessageBoxButtons.YesNo,
+                         MessageBoxIcon.Question);
+        
+                     if (result == DialogResult.Yes)
+                     {
+                         // Delete from file
+                         fileHandler.DeleteSuperhero(selectedHeroId);
+        
+                         MessageBox.Show("Superhero deleted successfully!", "Success",
+                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+                         // Refresh display and clear inputs
+                         LoadSuperheroes();
+                         ClearInputs();
+        
+                         // Git commit message suggestion
+                         MessageBox.Show("Remember to commit: git add . && git commit -m \"Deleted superhero record\"",
+                             "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     }
+                 }
+         catch (Exception ex)
+                 {
+                     MessageBox.Show($"Error deleting superhero: {ex.Message}",
+                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 }
         }
 
-       
+        /// <summary>
+        /// Generate summary report button click event
+        /// </summary>
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
-           
+            try
+                 {
+                     string summary = fileHandler.GenerateSummary();
+        
+                     // Display summary in a message box
+                     MessageBox.Show(summary, "Summary Report",
+                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+                     MessageBox.Show("Summary saved to summary.txt", "Success",
+                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+        
+                     // Git commit message suggestion
+                     MessageBox.Show("Remember to commit: git add . && git commit -m \"Generated summary report\"",
+                         "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                 }
+         catch (Exception ex)
+                 {
+                     MessageBox.Show($"Error generating report: {ex.Message}",
+                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 }          
         }
 
         
-        
-
-        
+         /// <summary>
+         /// Clear all input fields
+         /// </summary>
         private void btnClear_Click(object sender, EventArgs e)
         {
-            
+            ClearInputs();
         }
 
 
@@ -152,4 +255,5 @@ namespace PRG282Project_PTA_19PM
 
     }
 }
+
 
