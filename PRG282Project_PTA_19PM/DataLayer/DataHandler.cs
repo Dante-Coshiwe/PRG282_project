@@ -194,8 +194,8 @@ namespace PRG282Project_PTA_19PM.DataLayer
 
                     int sRankCount = heroes.Count(h => h.Rank == "S-Rank");
                     int aRankCount = heroes.Count(h => h.Rank == "A-Rank");
-                    int bRankCount = heroes.Count(h => h.Rank == "B-Rank");
-                    int cRankCount = heroes.Count(h => h.Rank == "C-Rank");
+                    int bRankCount = heroes.Count(h => h.Rank == "C-Rank");
+                    int cRankCount = heroes.Count(h => h.Rank == "F-Rank");
 
                     // Build summary text
                     string summary = "===== SUPERHERO SUMMARY REPORT =====\n";
@@ -206,8 +206,8 @@ namespace PRG282Project_PTA_19PM.DataLayer
                     summary += "Heroes Per Rank:\n";
                     summary += $"  S-Rank: {sRankCount}\n";
                     summary += $"  A-Rank: {aRankCount}\n";
-                    summary += $"  B-Rank: {bRankCount}\n";
                     summary += $"  C-Rank: {cRankCount}\n";
+                    summary += $"  F-Rank: {fRankCount}\n";
                     summary += "====================================";
 
                     // Save to file
@@ -222,5 +222,6 @@ namespace PRG282Project_PTA_19PM.DataLayer
             }
         }
     }
+
 
 
