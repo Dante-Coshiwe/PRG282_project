@@ -52,12 +52,12 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
                 }
                 else if (ExamScore >= 41 && ExamScore <= 60)
                 {
-                    Rank = "B-Rank";
+                    Rank = "C-Rank";
                     ThreatLevel = "Group Project Gone Wrong";
                 }
                 else if (ExamScore >= 0 && ExamScore <= 40)
                 {
-                    Rank = "C-Rank";
+                    Rank = "F-Rank";
                     ThreatLevel = "Pop Quiz";
                 }
             }
@@ -90,5 +90,6 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
             }
         }
     }
+
 
 
