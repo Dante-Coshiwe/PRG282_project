@@ -16,18 +16,43 @@ namespace PRG282Project_PTA_19PM
 {
     public partial class Form1 : Form
     {
-        
+        private FileHandler fileHandler;
+        private int selectedHeroId = -1;
 
         public Form1()
         {
             InitializeComponent();
+            fileHandler = new FileHandler();
             
         }
 
        
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            {
+                LoadSuperheroes();
+            }
+
+            /// <summary>
+            /// Loads all superheroes into the DataGridView
+            /// </summary>
+            private void LoadSuperheroes()
+            {
+                try
+                    {
+                        var heroes = fileHandler.ReadSuperheroes();
+                        dgvSuperheroes.DataSource = null;
+                        dgvSuperheroes.DataSource = heroes;
+
+                        // Clear 
+                        selectedHeroId = -1;
+                    }
+            catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error loading superheroes: {ex.Message}",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
         }
 
         
@@ -36,7 +61,41 @@ namespace PRG282Project_PTA_19PM
         
         private void btnAdd_Click(object sender, EventArgs e)
         {
-           
+            try
+                {
+                    // Validate inputs
+                    if (!ValidateInputs())
+                        return;
+                
+                    // Parse input values
+                    int heroId = int.Parse(txtHeroID.Text);
+                    string name = txtName.Text.Trim();
+                    int age = int.Parse(txtAge.Text);
+                    string superpower = txtSuperpower.Text.Trim();
+                    int examScore = int.Parse(txtExamScore.Text);
+                
+                    // Create new superhero
+                    Superhero newHero = new Superhero(heroId, name, age, superpower, examScore);
+                
+                    // Add to file
+                    fileHandler.AddSuperhero(newHero);
+                
+                    MessageBox.Show("Superhero added successfully!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                    // Refresh display and clear inputs
+                    LoadSuperheroes();
+                    ClearInputs();
+                
+                    // Git commit message suggestion
+                    MessageBox.Show("Remember to commit: git add . && git commit -m \"Added new superhero\"",
+                        "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error adding superhero: {ex.Message}",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
         }
 
         
@@ -93,3 +152,4 @@ namespace PRG282Project_PTA_19PM
 
     }
 }
+
