@@ -145,7 +145,7 @@ namespace PRG282Project_PTA_19PM
                      MessageBox.Show($"Error updating superhero: {ex.Message}",
                          "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  }           
-        }
+         }
 
          /// <summary>
          /// Delete superhero button click event
@@ -190,13 +190,13 @@ namespace PRG282Project_PTA_19PM
                      MessageBox.Show($"Error deleting superhero: {ex.Message}",
                          "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  }
-        }
+         }
 
-        /// <summary>
-        /// Generate summary report button click event
-        /// </summary>
-        private void btnGenerateReport_Click(object sender, EventArgs e)
-        {
+         /// <summary>
+         /// Generate summary report button click event
+         /// </summary>
+         private void btnGenerateReport_Click(object sender, EventArgs e)
+         {
             try
                  {
                      string summary = fileHandler.GenerateSummary();
@@ -212,29 +212,24 @@ namespace PRG282Project_PTA_19PM
                      MessageBox.Show("Remember to commit: git add . && git commit -m \"Generated summary report\"",
                          "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
                  }
-         catch (Exception ex)
+          catch (Exception ex)
                  {
                      MessageBox.Show($"Error generating report: {ex.Message}",
                          "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                  }          
-        }
+          }
 
         
          /// <summary>
-         /// Clear all input fields
+         /// DataGridView cell click event - populate input fields
          /// </summary>
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            ClearInputs();
-        }
 
-
-        private void dgvSuperheroes_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
+         private void dgvSuperheroes_CellClick(object sender, DataGridViewCellEventArgs e)
+         {
+             try
+             {
                 if (e.RowIndex >= 0)
-                {
+                 {
                     DataGridViewRow row = dgvSuperheroes.Rows[e.RowIndex];
 
                     txtHeroID.Text = row.Cells["HeroID"].Value.ToString();
@@ -252,9 +247,132 @@ namespace PRG282Project_PTA_19PM
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+         /// <summary>
+         /// DataGridView cell click event - populate input fields
+         /// </summary>
+         private void dgvSuperheroes_CellClick(object sender, DataGridViewCellEventArgs e) 
+         {
+             try
+             {
+                 if (e.RowIndex >= 0)
+                 {
+                     DataGridViewRow row = dgvSuperheroes.Rows[e.RowIndex];
+    
+                     txtHeroID.Text = row.Cells["HeroID"].Value.ToString();
+                     txtName.Text = row.Cells["Name"].Value.ToString();
+                     txtAge.Text = row.Cells["Age"].Value.ToString();
+                     txtSuperpower.Text = row.Cells["Superpower"].Value.ToString();
+                     txtExamScore.Text = row.Cells["ExamScore"].Value.ToString();
+    
+                     selectedHeroId = int.Parse(row.Cells["HeroID"].Value.ToString());
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show($"Error selecting superhero: {ex.Message}",
+                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }
+    
+         /// <summary>
+         /// Clear all input fields
+         /// </summary>
+         private void btnClear_Click(object sender, EventArgs e)
+         {
+             ClearInputs();
+         }
 
-    }
-}
-
-
-
+         /// <summary>
+         /// Validates all input fields
+         /// </summary>
+         private bool ValidateInputs()
+         {
+             // Check for empty fields
+             if (string.IsNullOrWhiteSpace(txtHeroID.Text))
+                 {
+                     MessageBox.Show("Hero ID is required!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtHeroID.Focus();
+                     return false;
+                 }
+    
+             if (string.IsNullOrWhiteSpace(txtName.Text))
+                 {
+                     MessageBox.Show("Name is required!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtName.Focus();
+                     return false;
+                 }
+    
+             if (string.IsNullOrWhiteSpace(txtAge.Text))
+                 {
+                     MessageBox.Show("Age is required!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtAge.Focus();
+                     return false;
+                 }
+    
+             if (string.IsNullOrWhiteSpace(txtSuperpower.Text))
+                 {
+                     MessageBox.Show("Superpower is required!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtSuperpower.Focus();
+                     return false;
+                 }
+    
+             if (string.IsNullOrWhiteSpace(txtExamScore.Text))
+                 {
+                     MessageBox.Show("Exam Score is required!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtExamScore.Focus();
+                     return false;
+                 }
+    
+             // Validate numeric fields
+             if (!int.TryParse(txtHeroID.Text, out int heroId))
+                 {
+                     MessageBox.Show("Hero ID must be a valid number!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtHeroID.Focus();
+                     return false;
+                 }
+    
+             if (!int.TryParse(txtAge.Text, out int age) || age <= 0)
+                 {
+                     MessageBox.Show("Age must be a positive number!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtAge.Focus();
+                     return false;
+                 }
+    
+             if (!int.TryParse(txtExamScore.Text, out int score) || score < 0 || score > 100)
+                 {
+                     MessageBox.Show("Exam Score must be between 0 and 100!", "Validation Error",
+                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     txtExamScore.Focus();
+                     return false;
+                 }
+    
+             return true;
+         }
+    
+         /// <summary>
+         /// Clears all input fields and resets selection
+         /// </summary>
+         private void ClearInputs()
+         {
+             txtHeroID.Clear();
+             txtName.Clear();
+             txtAge.Clear();
+             txtSuperpower.Clear();
+             txtExamScore.Clear();
+             selectedHeroId = -1;
+             txtHeroID.Focus();
+         }
+    
+       }
+   }
+    
+    
+    
+    
