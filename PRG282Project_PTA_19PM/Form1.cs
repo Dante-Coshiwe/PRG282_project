@@ -99,7 +99,7 @@ namespace PRG282Project_PTA_19PM
         }       
         
         /// <summary>
-    m   /// Update superhero button click event
+        /// Update superhero button click event
         /// </summary>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -255,5 +255,6 @@ namespace PRG282Project_PTA_19PM
 
     }
 }
+
 
 
