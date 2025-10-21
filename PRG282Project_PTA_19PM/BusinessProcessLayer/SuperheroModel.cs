@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace PRG282Project_PTA_19PM.BusinessProcessLayer
 {
-  /// <summary>
- /// Represents a superhero in the One Kick Heroes Academy
- /// </summary>
- public class Superhero
+  
+ internal class Superhero
  {
      // Properties
      public int HeroID { get; set; }
@@ -20,9 +18,7 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
      public string Rank { get; set; }
      public string ThreatLevel { get; set; }
 
-     /// <summary>
-     /// Constructor for creating a new superhero
-     /// </summary>
+     //Superhero Constructor
      public Superhero(int heroId, string name, int age, string superpower, int examScore)
      {
          HeroID = heroId;
@@ -33,10 +29,7 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
          CalculateRankAndThreat();
      }
 
-     /// <summary>
-     /// Calculates rank and threat level based on exam score
-     /// S-Rank: 81-100, A-Rank: 61-80, B-Rank: 41-60, C-Rank: 0-40
-     /// </summary>
+     //Method to get rank and threat of hero
      public void CalculateRankAndThreat()
      {
          if (ExamScore >= 81 && ExamScore <= 100)
@@ -61,17 +54,13 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
          }
      }
 
-     /// <summary>
-     /// Converts superhero data to a comma-separated string for file storage
-     /// </summary>
+     //Method to override main ToString to format superhero data before sending to txtfile
      public override string ToString()
      {
          return $"{HeroID},{Name},{Age},{Superpower},{ExamScore},{Rank},{ThreatLevel}";
      }
 
-     /// <summary>
-     /// Creates a Superhero object from a comma-separated string
-     /// </summary>
+     //Method to format data into superhero object after retrieving from textfile
      public static Superhero FromString(string data)
      {
          string[] parts = data.Split(',');
@@ -90,5 +79,6 @@ namespace PRG282Project_PTA_19PM.BusinessProcessLayer
  }
         
     }
+
 
 
