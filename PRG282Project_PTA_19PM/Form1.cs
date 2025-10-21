@@ -49,8 +49,7 @@ namespace PRG282Project_PTA_19PM
                     }
             catch (Exception ex)
                     {
-                        MessageBox.Show($"Error loading superheroes: {ex.Message}",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show($"Error loading superheroes: {ex.Message}");
                     }
                 }
         }
@@ -78,20 +77,18 @@ namespace PRG282Project_PTA_19PM
                     // Add to file
                     fileHandler.AddSuperhero(newHero);
                 
-                    MessageBox.Show("Superhero added successfully!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Superhero added successfully!");
                 
                     // Refresh display and clear inputs
                     LoadSuperheroes();
                     ClearInputs();
                 
                     
-                    MessageBox.Show("Added new superhero",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Added new superhero");
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error adding superhero: {ex.Message}",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error adding superhero: {ex.Message}");
                 }
         }       
         
@@ -102,8 +99,7 @@ namespace PRG282Project_PTA_19PM
                  {
                      if (selectedHeroId == -1)
                      {
-                         MessageBox.Show("Please select a superhero from the grid first!",
-                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         MessageBox.Show("Please select a superhero from the grid first!");
                          return;
                      }
 
@@ -124,20 +120,18 @@ namespace PRG282Project_PTA_19PM
                      // Update in file
                      fileHandler.UpdateSuperhero(selectedHeroId, updatedHero);
         
-                     MessageBox.Show("Superhero updated successfully!", "Success",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("Superhero updated successfully!");
         
                      // Refresh display and clear inputs
                      LoadSuperheroes();
                      ClearInputs();
         
                      
-                     MessageBox.Show("Updated superhero record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("Updated superhero record");
                  }
          catch (Exception ex)
                  {
-                     MessageBox.Show($"Error updating superhero: {ex.Message}",
-                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     MessageBox.Show($"Error updating superhero: {ex.Message}");
                  }           
          }
 
@@ -148,8 +142,7 @@ namespace PRG282Project_PTA_19PM
                  {
                      if (selectedHeroId == -1)
                      {
-                         MessageBox.Show("Please select a superhero from the grid first!",
-                             "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                         MessageBox.Show("Please select a superhero from the grid first!");
                          return;
                      }
         
@@ -165,21 +158,19 @@ namespace PRG282Project_PTA_19PM
                          // Delete from file
                          fileHandler.DeleteSuperhero(selectedHeroId);
         
-                         MessageBox.Show("Superhero deleted successfully!", "Success",
-                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         MessageBox.Show("Superhero deleted successfully!");
         
                          // Refresh display and clear inputs
                          LoadSuperheroes();
                          ClearInputs();
         
                          
-                         MessageBox.Show("Deleted superhero record", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         MessageBox.Show("Deleted superhero record");
                      }
                  }
          catch (Exception ex)
                  {
-                     MessageBox.Show($"Error deleting superhero: {ex.Message}",
-                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     MessageBox.Show($"Error deleting superhero: {ex.Message}");
                  }
          }
 
@@ -191,19 +182,16 @@ namespace PRG282Project_PTA_19PM
                      string summary = fileHandler.GenerateSummary();
         
                      // Display summary in a message box
-                     MessageBox.Show(summary, "Summary Report",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show(summary, "Summary Report");
         
-                     MessageBox.Show("Summary saved to summary.txt", "Success",
-                         MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("Summary saved to summary.txt");
         
                      
-                     MessageBox.Show("Generated summary report", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     MessageBox.Show("Generated summary report");
                  }
           catch (Exception ex)
                  {
-                     MessageBox.Show($"Error generating report: {ex.Message}",
-                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                     MessageBox.Show($"Error generating report: {ex.Message}");
                  }          
           }
 
@@ -229,8 +217,7 @@ namespace PRG282Project_PTA_19PM
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error selecting superhero: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error selecting superhero: {ex.Message}");
             }
         }
        
@@ -248,40 +235,35 @@ namespace PRG282Project_PTA_19PM
              // Check for empty fields
              if (string.IsNullOrWhiteSpace(txtHeroID.Text))
                  {
-                     MessageBox.Show("Hero ID is required!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Hero ID is required!");
                      txtHeroID.Focus();
                      return false;
                  }
     
              if (string.IsNullOrWhiteSpace(txtName.Text))
                  {
-                     MessageBox.Show("Name is required!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Name is required!");
                      txtName.Focus();
                      return false;
                  }
     
              if (string.IsNullOrWhiteSpace(txtAge.Text))
                  {
-                     MessageBox.Show("Age is required!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Age is required!");
                      txtAge.Focus();
                      return false;
                  }
     
              if (string.IsNullOrWhiteSpace(txtSuperpower.Text))
                  {
-                     MessageBox.Show("Superpower is required!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Superpower is required!");
                      txtSuperpower.Focus();
                      return false;
                  }
     
              if (string.IsNullOrWhiteSpace(txtExamScore.Text))
                  {
-                     MessageBox.Show("Exam Score is required!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Exam Score is required!");
                      txtExamScore.Focus();
                      return false;
                  }
@@ -289,24 +271,21 @@ namespace PRG282Project_PTA_19PM
              // Validate numeric fields
              if (!int.TryParse(txtHeroID.Text, out int heroId))
                  {
-                     MessageBox.Show("Hero ID must be a valid number!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Hero ID must be a valid number!");
                      txtHeroID.Focus();
                      return false;
                  }
     
              if (!int.TryParse(txtAge.Text, out int age) || age <= 0)
                  {
-                     MessageBox.Show("Age must be a positive number!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Age must be a positive number!");
                      txtAge.Focus();
                      return false;
                  }
     
              if (!int.TryParse(txtExamScore.Text, out int score) || score < 0 || score > 100)
                  {
-                     MessageBox.Show("Exam Score must be between 0 and 100!", "Validation Error",
-                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                     MessageBox.Show("Exam Score must be between 0 and 100!");
                      txtExamScore.Focus();
                      return false;
                  }
@@ -333,4 +312,5 @@ namespace PRG282Project_PTA_19PM
     
     
     
+
 
