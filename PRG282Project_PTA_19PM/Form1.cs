@@ -16,6 +16,8 @@ namespace PRG282Project_PTA_19PM
 {
     public partial class Form1 : Form
     {
+
+    //Variable declaration
         private FileHandler fileHandler;
         private int selectedHeroId = -1;
 
@@ -26,16 +28,14 @@ namespace PRG282Project_PTA_19PM
             
         }
 
-       
+       //Method to load superhero data when form loads up
         private void Form1_Load(object sender, EventArgs e)
         {
             {
                 LoadSuperheroes();
             }
 
-            /// <summary>
-            /// Loads all superheroes into the DataGridView
-            /// </summary>
+            //Method to load superheros data into data grid view
             private void LoadSuperheroes()
             {
                 try
@@ -56,9 +56,7 @@ namespace PRG282Project_PTA_19PM
         }
 
         
-        /// <summary>
-        /// Add new superhero button click event
-        /// </summary> 
+        //Button method to add a new superhero to textfile 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -87,9 +85,8 @@ namespace PRG282Project_PTA_19PM
                     LoadSuperheroes();
                     ClearInputs();
                 
-                    // Git commit message suggestion
-                    MessageBox.Show("Remember to commit: git add . && git commit -m \"Added new superhero\"",
-                        "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                    MessageBox.Show("Added new superhero",MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
@@ -98,9 +95,7 @@ namespace PRG282Project_PTA_19PM
                 }
         }       
         
-        /// <summary>
-        /// Update superhero button click event
-        /// </summary>
+        //Button Method to Update a superheroes data from the textfile
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -136,9 +131,8 @@ namespace PRG282Project_PTA_19PM
                      LoadSuperheroes();
                      ClearInputs();
         
-                     // Git commit message suggestion
-                     MessageBox.Show("Remember to commit: git add . && git commit -m \"Updated superhero record\"",
-                         "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     
+                     MessageBox.Show("Updated superhero record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                  }
          catch (Exception ex)
                  {
@@ -147,9 +141,7 @@ namespace PRG282Project_PTA_19PM
                  }           
          }
 
-         /// <summary>
-         /// Delete superhero button click event
-         /// </summary>
+        //Button Method to delete superhero from texfile
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
@@ -180,9 +172,8 @@ namespace PRG282Project_PTA_19PM
                          LoadSuperheroes();
                          ClearInputs();
         
-                         // Git commit message suggestion
-                         MessageBox.Show("Remember to commit: git add . && git commit -m \"Deleted superhero record\"",
-                             "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                         
+                         MessageBox.Show("Deleted superhero record", MessageBoxButtons.OK, MessageBoxIcon.Information);
                      }
                  }
          catch (Exception ex)
@@ -192,9 +183,7 @@ namespace PRG282Project_PTA_19PM
                  }
          }
 
-         /// <summary>
-         /// Generate summary report button click event
-         /// </summary>
+       //Button method to generate and show summary report 
          private void btnGenerateReport_Click(object sender, EventArgs e)
          {
             try
@@ -208,9 +197,8 @@ namespace PRG282Project_PTA_19PM
                      MessageBox.Show("Summary saved to summary.txt", "Success",
                          MessageBoxButtons.OK, MessageBoxIcon.Information);
         
-                     // Git commit message suggestion
-                     MessageBox.Show("Remember to commit: git add . && git commit -m \"Generated summary report\"",
-                         "Git Reminder", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                     
+                     MessageBox.Show("Generated summary report", MessageBoxButtons.OK, MessageBoxIcon.Information);
                  }
           catch (Exception ex)
                  {
@@ -220,10 +208,8 @@ namespace PRG282Project_PTA_19PM
           }
 
         
-         /// <summary>
-         /// DataGridView cell click event - populate input fields
-         /// </summary>
-
+         
+         // DataGridView cell click method to populate input fields
          private void dgvSuperheroes_CellClick(object sender, DataGridViewCellEventArgs e)
          {
              try
@@ -247,44 +233,16 @@ namespace PRG282Project_PTA_19PM
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-         /// <summary>
-         /// DataGridView cell click event - populate input fields
-         /// </summary>
-         private void dgvSuperheroes_CellClick(object sender, DataGridViewCellEventArgs e) 
-         {
-             try
-             {
-                 if (e.RowIndex >= 0)
-                 {
-                     DataGridViewRow row = dgvSuperheroes.Rows[e.RowIndex];
+       
     
-                     txtHeroID.Text = row.Cells["HeroID"].Value.ToString();
-                     txtName.Text = row.Cells["Name"].Value.ToString();
-                     txtAge.Text = row.Cells["Age"].Value.ToString();
-                     txtSuperpower.Text = row.Cells["Superpower"].Value.ToString();
-                     txtExamScore.Text = row.Cells["ExamScore"].Value.ToString();
-    
-                     selectedHeroId = int.Parse(row.Cells["HeroID"].Value.ToString());
-                 }
-             }
-             catch (Exception ex)
-             {
-                 MessageBox.Show($"Error selecting superhero: {ex.Message}",
-                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-         }
-    
-         /// <summary>
-         /// Clear all input fields
-         /// </summary>
+        //Button method to clear all input fields
          private void btnClear_Click(object sender, EventArgs e)
          {
              ClearInputs();
          }
 
-         /// <summary>
-         /// Validates all input fields
-         /// </summary>
+         
+         // Method to validates all input fields
          private bool ValidateInputs()
          {
              // Check for empty fields
@@ -356,9 +314,8 @@ namespace PRG282Project_PTA_19PM
              return true;
          }
     
-         /// <summary>
-         /// Clears all input fields and resets selection
-         /// </summary>
+         
+         //Method to clears all input fields 
          private void ClearInputs()
          {
              txtHeroID.Clear();
@@ -376,3 +333,4 @@ namespace PRG282Project_PTA_19PM
     
     
     
+
