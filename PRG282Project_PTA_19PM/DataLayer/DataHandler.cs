@@ -10,15 +10,15 @@ using PRG282Project_PTA_19PM.DataLayer;
 
 namespace PRG282Project_PTA_19PM.DataLayer
 {
-    public class FileHandler
+    internal class FileHandler
  {
+
+     public FileHandler() {}
 
      private const string SUPERHERO_FILE = "superheroes.txt";
      private const string SUMMARY_FILE = "summary.txt";
 
-     /// <summary>
-     /// Reads all superhero records from the file
-     /// </summary>
+     
      public List<Superhero> ReadSuperheroes()
      {
          List<Superhero> heroes = new List<Superhero>();
@@ -61,9 +61,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          return heroes;
      }
 
-     /// <summary>
-     /// Writes all superhero records to the file
-     /// </summary>
+     
      public void WriteSuperheroes(List<Superhero> heroes)
      {
          try
@@ -85,9 +83,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     /// <summary>
-     /// Adds a new superhero to the file
-     /// </summary>
+    
      public void AddSuperhero(Superhero hero)
      {
          try
@@ -113,9 +109,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     /// <summary>
-     /// Updates an existing superhero record
-     /// </summary>
+     
      public void UpdateSuperhero(int heroId, Superhero updatedHero)
      {
          try
@@ -143,9 +137,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     /// <summary>
-     /// Deletes a superhero record
-     /// </summary>
+     
      public void DeleteSuperhero(int heroId)
      {
          try
@@ -172,9 +164,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     /// <summary>
-     /// Generates and saves a summary report
-     /// </summary>
+     
      public string GenerateSummary()
      {
          try
@@ -222,6 +212,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
  }
       
     }
+
 
 
 
