@@ -63,7 +63,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          return heroes;
      }
 
-     
+     //Method to write superhero data to superheroes textfile
      public void WriteSuperheroes(List<Superhero> heroes)
      {
          try
@@ -214,6 +214,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
  }
       
     }
+
 
 
 
