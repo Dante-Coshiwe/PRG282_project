@@ -85,7 +85,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-    
+    //Method to add new hero to superheroes list and write all heroes back to the textfile
      public void AddSuperhero(Superhero hero)
      {
          try
@@ -111,7 +111,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     
+     //Method to Update a superheros information and write it back to the textfile
      public void UpdateSuperhero(int heroId, Superhero updatedHero)
      {
          try
@@ -214,6 +214,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
  }
       
     }
+
 
 
 
