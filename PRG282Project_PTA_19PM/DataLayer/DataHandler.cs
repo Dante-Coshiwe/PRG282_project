@@ -13,12 +13,14 @@ namespace PRG282Project_PTA_19PM.DataLayer
     internal class FileHandler
  {
 
+    //Constructor
      public FileHandler() {}
 
+    //Constants for the files names
      private const string SUPERHERO_FILE = "superheroes.txt";
      private const string SUMMARY_FILE = "summary.txt";
 
-     
+     //Method to read superhero data from superheroes textfile
      public List<Superhero> ReadSuperheroes()
      {
          List<Superhero> heroes = new List<Superhero>();
@@ -212,6 +214,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
  }
       
     }
+
 
 
 
