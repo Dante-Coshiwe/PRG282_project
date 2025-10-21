@@ -139,7 +139,7 @@ namespace PRG282Project_PTA_19PM.DataLayer
          }
      }
 
-     
+     //Method to delete a superhero from list and write everything to superhero text file
      public void DeleteSuperhero(int heroId)
      {
          try
@@ -165,8 +165,8 @@ namespace PRG282Project_PTA_19PM.DataLayer
              throw new Exception($"Error deleting superhero: {ex.Message}");
          }
      }
-
-     
+        
+     //Method to generate and write a report to the summary txt
      public string GenerateSummary()
      {
          try
@@ -211,9 +211,11 @@ namespace PRG282Project_PTA_19PM.DataLayer
              throw new Exception($"Error generating summary: {ex.Message}");
          }
      }
+     
  }
       
     }
+
 
 
 
