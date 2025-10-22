@@ -30,7 +30,6 @@ namespace PRG282Project_PTA_19PM
 
        //Method to load superhero data when form loads up
         private void Form1_Load(object sender, EventArgs e)
-        {
             {
                 LoadSuperheroes();
             }
@@ -52,7 +51,6 @@ namespace PRG282Project_PTA_19PM
                         MessageBox.Show($"Error loading superheroes: {ex.Message}");
                     }
                 }
-        }
 
         
         //Button method to add a new superhero to textfile 
@@ -312,5 +310,6 @@ namespace PRG282Project_PTA_19PM
     
     
     
+
 
 
